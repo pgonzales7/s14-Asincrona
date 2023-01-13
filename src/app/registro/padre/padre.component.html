@@ -1,0 +1,60 @@
+<section class="container py-5 w-50">
+    <section class="card shadow-2-strong" style="border-radius: 1rem">
+      <section class="card-body p-5">
+          <h2 class="text-center">Registro personas</h2>
+          <app-hijo [data_hijo]="data_padre"></app-hijo>
+  
+          <form [formGroup]="registroForm1">
+              <section class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" [(ngModel)]="nombre"
+                    formControlName="nomb" />
+        
+                  <section *ngIf="nomb?.invalid && (nomb?.dirty || nomb?.touched)">
+                    <section *ngIf="nomb?.errors?.['required']" class="alert alert-danger">
+                      El valor es obligatorio
+                    </section>
+                    <section *ngIf="nomb?.errors?.['pattern']" class="alert alert-danger">
+                      El valor solo permite ingresar letras
+                    </section>
+                  </section>
+              </section>
+        
+              <section class="form-group">
+                  <label for="dni" >Dni</label>
+                  <input type="number" class="form-control" id="dni" name="dni" placeholder="Dni" [(ngModel)]="dni"
+                    formControlName="dni1" />
+                  <section *ngIf="dni1?.invalid && (dni1?.dirty || dni1?.touched)">
+                    <section *ngIf="dni1?.errors?.['required']" class="alert alert-danger">
+                      El valor es obligatorio.
+                    </section>
+                    <section *ngIf="dni1?.errors?.['max']" class="alert alert-danger">
+                      Se permite solo 8 dígitos.
+                    </section>
+                  </section>
+              </section>
+        
+              <section class="form-group">
+                  <label for="estado">Estado civil</label>
+                  <select class="form-control" id="estado" name="estado" [(ngModel)]="estado" formControlName="estad">
+                    <option value="">Seleccione</option>
+                    <option value="soltero">Soltero</option>
+                    <option value="casado">Casado</option>
+                    <option value="viudo">Viudo</option>
+                    <option value="divorciado">Divorciado</option>
+                  </select>
+        
+                  <section *ngIf="estad?.invalid && (estad?.dirty || estad?.touched)">
+                    <section *ngIf="estad?.errors?.['required']" class="alert alert-danger">
+                      El valor es obligatorio
+                    </section>
+                  </section>
+        
+                  <section class="form-group text-center m-4">
+                    <button class="btn btn-success" (click)="registrar()">Registrar</button>
+                  </section>
+              </section>
+        </form>
+      </section>
+    </section>
+  </section>
